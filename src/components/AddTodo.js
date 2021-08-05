@@ -1,8 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTodo } from "../actions";
 
-const AddTodo = ({ dispatch }) => {
+const AddTodo = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (event) => {
     if (event.key === "Enter") {
       dispatch(addTodo(event.target.value));
@@ -17,4 +19,4 @@ const AddTodo = ({ dispatch }) => {
   );
 };
 
-export default connect()(AddTodo);
+export default AddTodo;
