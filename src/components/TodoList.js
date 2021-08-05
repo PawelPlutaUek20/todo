@@ -1,13 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Todo from "./Todo";
+import { getVisibleTodos } from "../selectors";
 
 const TodoList = () => {
-  const todos = useSelector((state) => state.todos);
+  const filteredTodos = useSelector(getVisibleTodos);
 
   return (
     <div>
-      {todos.map((todo) => (
+      {filteredTodos.map((todo) => (
         <Todo key={todo.id} {...todo} />
       ))}
     </div>
