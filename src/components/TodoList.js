@@ -1,5 +1,5 @@
 import React from "react";
-import { toggleTodo } from "../actions";
+import { toggleTodo, deleteTodo } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Todo from "./Todo";
 
@@ -11,10 +11,19 @@ const TodoList = () => {
     dispatch(toggleTodo(id));
   };
 
+  const handleDelete = (id) => {
+    dispatch(deleteTodo(id));
+  };
+
   return (
-    <div>
+    <div style={{ display: "table" }}>
       {todos.map((todo) => (
-        <Todo key={todo.id} {...todo} onClick={() => handleToggle(todo.id)} />
+        <Todo
+          key={todo.id}
+          {...todo}
+          handleToggle={() => handleToggle(todo.id)}
+          handleDelete={() => handleDelete(todo.id)}
+        />
       ))}
     </div>
   );
