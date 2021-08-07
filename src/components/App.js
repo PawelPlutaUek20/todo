@@ -6,11 +6,25 @@ import {
   Container,
   createTheme,
   CssBaseline,
+  makeStyles,
   ThemeProvider,
 } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    [theme.breakpoints.only("xs")]: {
+      marginTop: -116,
+    },
+    [theme.breakpoints.up("sm")]: {
+      marginTop: -165,
+    },
+    padding: 24,
+  },
+}));
+
 const App = () => {
+  const classes = useStyles();
   const theme = createTheme({
     palette: {
       type: useSelector((state) => state.theme),
@@ -40,7 +54,7 @@ const App = () => {
       <CssBaseline />
       <>
         <Header />
-        <Container maxWidth="sm" style={{ marginTop: -165, padding: 24 }}>
+        <Container maxWidth="sm" className={classes.container}>
           <AddTodo />
           <TodoList />
           <FilterTodos />

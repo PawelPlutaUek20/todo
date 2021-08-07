@@ -6,7 +6,12 @@ import { List, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   todoList: {
-    marginTop: 22,
+    [theme.breakpoints.only("xs")]: {
+      marginTop: 8,
+    },
+    [theme.breakpoints.up("sm")]: {
+      marginTop: 14,
+    },
   },
 }));
 

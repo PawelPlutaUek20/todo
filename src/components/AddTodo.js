@@ -13,14 +13,20 @@ const useStyles = makeStyles((theme) => ({
       "&:focus-within": {
         "& .MuiInputAdornment-root": {
           color: theme.palette.action.active,
-          transition: "border 0.2s ease 0s, transform 0.2s ease 0s",
+          transition: "transform 0.2s ease 0s",
           transform: "scale(1.1)",
         },
       },
     },
     "& .MuiInputBase-input": {
-      height: 27,
-      fontSize: 18,
+      [theme.breakpoints.only("xs")]: {
+        height: 11,
+        fontSize: 12,
+      },
+      [theme.breakpoints.up("sm")]: {
+        height: 27,
+        fontSize: 18,
+      },
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
@@ -31,9 +37,14 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     "& .MuiInputAdornment-root": {
-      marginRight: theme.spacing(2),
-      color: theme.palette.action.selected,
-      transition: "border 0.2s ease 0s, transform 0.2s ease 0s",
+      [theme.breakpoints.only("xs")]: {
+        marginRight: theme.spacing(1.5),
+      },
+      [theme.breakpoints.up("sm")]: {
+        marginRight: theme.spacing(3),
+      },
+      color: theme.palette.divider,
+      transition: "transform 0.2s ease 0s",
       transform: "scale(1)",
     },
   },

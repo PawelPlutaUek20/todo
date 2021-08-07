@@ -17,18 +17,42 @@ import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    [theme.breakpoints.only("xs")]: {
+      height: 53,
+      "& .MuiTypography-body1": {
+        fontSize: 12,
+      },
+    },
+    [theme.breakpoints.up("sm")]: {
+      height: 65,
+      "& .MuiTypography-body1": {
+        [theme.breakpoints.only("xs")]: {
+          fontSize: 18,
+        },
+      },
+    },
     backgroundColor: theme.palette.background.paper,
-    height: 65,
     justifyContent: "space-between",
-    fontSize: 18,
   },
   completed: {
     textDecoration: "line-through",
+    color: theme.palette.action.disabledBackground,
   },
   checkbox: {
     "& .MuiIconButton-label": {
       paddingLeft: 1,
     },
+  },
+  icon: {
+    [theme.breakpoints.only("xs")]: {
+      minWidth: 34,
+    },
+    [theme.breakpoints.up("sm")]: {
+      minWidth: 46,
+    },
+  },
+  button: {
+    color: theme.palette.divider,
   },
 }));
 
@@ -49,9 +73,9 @@ const Todo = ({ id, text, completed }) => {
       <ListItem
         className={`${classes.root} ${completed ? classes.completed : null}`}
       >
-        <ListItemIcon onClick={handleToggle}>
+        <ListItemIcon className={classes.icon} onClick={handleToggle}>
           <Checkbox
-            className={classes.checkbox}
+            className={`${classes.checkbox} ${classes.button}`}
             edge="start"
             checked={completed}
             tabIndex={-1}
@@ -63,7 +87,12 @@ const Todo = ({ id, text, completed }) => {
         </ListItemIcon>
         <ListItemText id={id} primary={text} />
         <ListItemSecondaryAction>
-          <IconButton onClick={handleDelete} edge="end" aria-label="comments">
+          <IconButton
+            className={classes.button}
+            onClick={handleDelete}
+            edge="end"
+            aria-label="comments"
+          >
             <CloseIcon />
           </IconButton>
         </ListItemSecondaryAction>
