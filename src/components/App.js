@@ -2,7 +2,12 @@ import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 import FilterTodos from "./FilterTodos";
 import Header from "./Header";
-import { createTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
+import {
+  Container,
+  createTheme,
+  CssBaseline,
+  ThemeProvider,
+} from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 const App = () => {
@@ -35,9 +40,11 @@ const App = () => {
       <CssBaseline />
       <>
         <Header />
-        <AddTodo />
-        <TodoList />
-        <FilterTodos />
+        <Container maxWidth="sm" style={{ marginTop: -165, padding: 24 }}>
+          <AddTodo />
+          <TodoList />
+          <FilterTodos />
+        </Container>
       </>
     </ThemeProvider>
   );
