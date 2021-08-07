@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.background.paper,
       "&:focus-within": {
         "& .MuiInputAdornment-root": {
-          color: theme.palette.action.active,
+          color: theme.palette.text.primary,
           transition: "transform 0.2s ease 0s",
           transform: "scale(1.1)",
         },
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.up("sm")]: {
         marginRight: theme.spacing(3),
       },
-      color: theme.palette.divider,
+      color: theme.palette.action.disabledBackground,
       transition: "transform 0.2s ease 0s",
       transform: "scale(1)",
     },

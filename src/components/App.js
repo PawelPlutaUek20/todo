@@ -10,6 +10,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import { useSelector } from "react-redux";
+import { darkTheme, lightTheme } from "../theme";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -25,29 +26,8 @@ const useStyles = makeStyles((theme) => ({
 
 const App = () => {
   const classes = useStyles();
-  const theme = createTheme({
-    palette: {
-      type: useSelector((state) => state.theme),
-    },
-    typography: {
-      fontFamily: "Josefin Sans, sans-serif",
-      fontWeightLight: 400,
-      fontWeightBold: 700,
-      h2: {
-        fontWeight: "bold",
-        textTransform: "uppercase",
-      },
-    },
-    overrides: {
-      MuiCssBaseline: {
-        "@global": {
-          body: {
-            minWidth: 320,
-          },
-        },
-      },
-    },
-  });
+  const themeType = useSelector((state) => state.theme);
+  const theme = createTheme(themeType === "light" ? lightTheme : darkTheme);
 
   return (
     <ThemeProvider theme={theme}>

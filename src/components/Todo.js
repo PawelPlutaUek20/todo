@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   completed: {
     textDecoration: "line-through",
-    color: theme.palette.action.disabledBackground,
+    color: theme.palette.action.disabledBackground
   },
   checkbox: {
     "& .MuiIconButton-label": {
@@ -52,8 +52,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    color: theme.palette.divider,
-  },
+    color: theme.palette.action.disabledBackground,
+  }
 }));
 
 const Todo = ({ id, text, completed }) => {
@@ -87,12 +87,7 @@ const Todo = ({ id, text, completed }) => {
         </ListItemIcon>
         <ListItemText id={id} primary={text} />
         <ListItemSecondaryAction>
-          <IconButton
-            className={classes.button}
-            onClick={handleDelete}
-            edge="end"
-            aria-label="comments"
-          >
+          <IconButton className={classes.button} onClick={handleDelete} edge="end" aria-label="comments">
             <CloseIcon />
           </IconButton>
         </ListItemSecondaryAction>
