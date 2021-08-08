@@ -25,9 +25,11 @@ export const darkTheme = {
     type: "dark",
     text: {
       primary: "hsl(234, 39%, 85%)",
+      secondary: "hsl(234, 11%, 52%)",
     },
     action: {
-      disabledBackground: "hsl(234, 11%, 52%)",
+      disabledBackground: "hsl(233, 14%, 35%)",
+      hover: "hsl(236, 33%, 92%)",
     },
     background: {
       default: "hsl(235, 21%, 11%)",
@@ -43,9 +45,11 @@ export const lightTheme = {
     type: "light",
     text: {
       primary: "hsl(235, 19%, 35%)",
+      secondary: "hsl(236, 9%, 61%)",
     },
     action: {
       disabledBackground: "hsl(233, 11%, 84%)",
+      hover: "hsl(235, 19%, 35%)",
     },
     background: {
       default: "hsl(0, 0%, 98%)",

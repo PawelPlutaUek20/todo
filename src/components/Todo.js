@@ -26,9 +26,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       height: 65,
       "& .MuiTypography-body1": {
-        [theme.breakpoints.only("xs")]: {
-          fontSize: 18,
-        },
+        fontSize: 16,
       },
     },
     backgroundColor: theme.palette.background.paper,
@@ -36,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   completed: {
     textDecoration: "line-through",
-    color: theme.palette.action.disabledBackground
+    color: theme.palette.action.disabledBackground,
   },
   checkbox: {
     "& .MuiIconButton-label": {
@@ -53,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     color: theme.palette.action.disabledBackground,
-  }
+  },
 }));
 
 const Todo = ({ id, text, completed }) => {
@@ -77,6 +75,7 @@ const Todo = ({ id, text, completed }) => {
           <Checkbox
             className={`${classes.checkbox} ${classes.button}`}
             edge="start"
+            color="primary"
             checked={completed}
             tabIndex={-1}
             disableRipple
@@ -87,7 +86,12 @@ const Todo = ({ id, text, completed }) => {
         </ListItemIcon>
         <ListItemText id={id} primary={text} />
         <ListItemSecondaryAction>
-          <IconButton className={classes.button} onClick={handleDelete} edge="end" aria-label="comments">
+          <IconButton
+            className={classes.button}
+            onClick={handleDelete}
+            edge="end"
+            aria-label="comments"
+          >
             <CloseIcon />
           </IconButton>
         </ListItemSecondaryAction>

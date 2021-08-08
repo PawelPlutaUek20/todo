@@ -1,6 +1,5 @@
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
-import FilterTodos from "./FilterTodos";
 import Header from "./Header";
 import {
   Container,
@@ -10,7 +9,8 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../theme";
+import { getTheme } from "../selectors";
+import TodosVisibilityMobile from "./TodosVisibilityMobile";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -26,8 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const App = () => {
   const classes = useStyles();
-  const themeType = useSelector((state) => state.theme);
-  const theme = createTheme(themeType === "light" ? lightTheme : darkTheme);
+  const theme = createTheme(useSelector(getTheme));
 
   return (
     <ThemeProvider theme={theme}>
@@ -37,7 +36,7 @@ const App = () => {
         <Container maxWidth="sm" className={classes.container}>
           <AddTodo />
           <TodoList />
-          <FilterTodos />
+          <TodosVisibilityMobile />
         </Container>
       </>
     </ThemeProvider>

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Todo from "./Todo";
 import { getVisibleTodos } from "../selectors";
 import { List, makeStyles } from "@material-ui/core";
+import FilterTodos from "./FilterTodos";
 
 const useStyles = makeStyles((theme) => ({
   todoList: {
@@ -24,6 +25,7 @@ const TodoList = () => {
       {filteredTodos.map((todo) => (
         <Todo key={todo.id} {...todo} />
       ))}
+      <FilterTodos />
     </List>
   );
 };

@@ -1,39 +1,56 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setVisibilityFilter } from "../reducers/visibilityFilter";
 import { clearCompleted } from "../reducers/todos";
 import { getTodosLeft } from "../selectors";
+import { ListItem, Typography, makeStyles, Hidden } from "@material-ui/core";
+import TodosVisibility from "./TodosVisibility";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    [theme.breakpoints.only("xs")]: {
+      height: 48,
+      "& .MuiTypography-body1": {
+        fontSize: 12,
+      },
+    },
+    [theme.breakpoints.up("sm")]: {
+      height: 52,
+      "& .MuiTypography-body1": {
+        fontSize: 14,
+        margin: "0 8px",
+      },
+    },
+    backgroundColor: theme.palette.background.paper,
+    justifyContent: "space-between",
+    color: theme.palette.text.secondary,
+  },
+  button: {
+    cursor: "pointer",
+    "&:hover": {
+      color: theme.palette.action.hover,
+    },
+  },
+}));
 
 const FilterTodos = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const itemsLeft = useSelector(getTodosLeft);
-
-  const handleFilter = (filter) => {
-    dispatch(setVisibilityFilter(filter));
-  };
 
   const handleClear = () => {
     dispatch(clearCompleted());
   };
 
   return (
-    <div>
-      <div>
-        <p>{itemsLeft} items left</p>
-      </div>
-      <div style={{ paddingBottom: 16 }}>
-        {["All", "Active", "Completed"].map((filter) => {
-          return (
-            <button key={filter} onClick={() => handleFilter(filter)}>
-              {filter}
-            </button>
-          );
-        })}
-      </div>
-      <div>
-        <button onClick={handleClear}>Clear Completed</button>
-      </div>
-    </div>
+    <ListItem className={classes.root}>
+      <Typography>{itemsLeft} items left</Typography>
+      <Hidden xsDown>
+        <TodosVisibility />
+      </Hidden>
+      <Typography className={classes.button} onClick={handleClear}>
+        Clear Completed
+      </Typography>
+    </ListItem>
   );
 };
 
