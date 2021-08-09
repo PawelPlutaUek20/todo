@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TodoList = () => {
   const classes = useStyles();
+  const todos = useSelector((state) => state.todos)
   const filteredTodos = useSelector(getVisibleTodos);
   const dispatch = useDispatch();
 
@@ -27,7 +28,7 @@ const TodoList = () => {
     if (!result.destination) return;
 
     dispatch(
-      reorderTodos(filteredTodos, result.source.index, result.destination.index)
+      reorderTodos(todos, result.source.index, result.destination.index)
     );
   };
 
