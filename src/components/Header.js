@@ -1,8 +1,6 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import { makeStyles } from "@material-ui/core/styles";
-import lightBackgroundImage from "../assets/bg-desktop-light.jpg";
-import darkBackgroundImage from "../assets/bg-desktop-dark.jpg";
 import { Container, Grid, IconButton, Typography } from "@material-ui/core";
 import Brightness3Icon from "@material-ui/icons/Brightness3";
 import BrightnessHighIcon from "@material-ui/icons/BrightnessHigh";
@@ -18,10 +16,7 @@ const useStyles = makeStyles((theme) => ({
       height: 300,
     },
     padding: 24,
-    backgroundImage:
-      theme.palette.type === "light"
-        ? `url(${lightBackgroundImage})`
-        : `url(${darkBackgroundImage})`,
+    backgroundImage: theme.backgroundImage,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center",

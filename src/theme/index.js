@@ -1,3 +1,6 @@
+import lightBackgroundImage from "../assets/bg-desktop-light.jpg";
+import darkBackgroundImage from "../assets/bg-desktop-dark.jpg";
+
 const baseTheme = {
   typography: {
     fontFamily: "Josefin Sans, sans-serif",
@@ -37,6 +40,7 @@ export const darkTheme = {
     },
     divider: "hsl(237, 14%, 26%)",
   },
+  backgroundImage: `url(${darkBackgroundImage})`,
 };
 
 export const lightTheme = {
@@ -56,4 +60,5 @@ export const lightTheme = {
     },
     divider: "hsl(236, 33%, 92%)",
   },
+  backgroundImage: `url(${lightBackgroundImage})`,
 };
