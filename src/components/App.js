@@ -11,6 +11,7 @@ import {
 import { useSelector } from "react-redux";
 import { getTheme } from "../selectors";
 import TodosVisibilityMobile from "./TodosVisibilityMobile";
+import DndInfo from "./DndInfo";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -37,6 +38,7 @@ const App = () => {
           <AddTodo />
           <TodoList />
           <TodosVisibilityMobile />
+          <DndInfo />
         </Container>
       </>
     </ThemeProvider>

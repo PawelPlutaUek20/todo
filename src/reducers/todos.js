@@ -34,10 +34,22 @@ export const todoSlice = createSlice({
     clearCompleted: (state, action) => {
       return state.filter((todo) => todo.completed === false);
     },
+    reorderTodos: {
+      reducer: (state, action) => {
+        return action.payload;
+      },
+      prepare: (todos, startIdx, endIdx) => {
+        const todoList = Array.from(todos);
+        const [reorderedTodo] = todoList.splice(startIdx, 1);
+        todoList.splice(endIdx, 0, reorderedTodo);
+
+        return { payload: todoList };
+      },
+    },
   },
 });
 
-export const { addTodo, toggleTodo, deleteTodo, clearCompleted } =
+export const { addTodo, toggleTodo, deleteTodo, clearCompleted, reorderTodos } =
   todoSlice.actions;
 
 export default todoSlice.reducer;
